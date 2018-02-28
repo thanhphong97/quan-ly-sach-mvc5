@@ -27,7 +27,8 @@ namespace QuanLySach.Controllers
             TaiKhoan taikhoan = db.TaiKhoans.SingleOrDefault(tk => tk.TenDangNhap == TaiKhoan && tk.MatKhau == MatKhau);
             if (taikhoan != null)
             {
-                //Session["TaiKhoan"] = taikhoan;
+               
+                Session["TaiKhoan"] = taikhoan.TenDangNhap;
                 return RedirectToAction("AdminHome","Admin");
             }
             //ViewBag.ThongBaoDangNhap = "Đăng nhập thất bại";

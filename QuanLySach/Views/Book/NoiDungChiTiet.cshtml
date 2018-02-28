@@ -11,7 +11,7 @@
             <p>@Model.NoiDungChiTiet</p>
             <div class="book_info">
                 <strong>Tác giả: </strong><span>@Model.TacGia</span><br>
-                <strong>Ngày phát hành: </strong><span>@Model.NgayPhatHanh</span>
+                <strong>Ngày phát hành: </strong><span>@string.Format("{0:dd/MM/yyyy}", @Model.NgayPhatHanh)</span>
             </div>
             <div class="image_book">
                 <img src="@Url.Content("~/Content/images/"+ @Model.AnhBia)">

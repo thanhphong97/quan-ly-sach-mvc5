@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Quản lý tài khoản</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -38,9 +38,9 @@
                     @Html.DisplayFor(modelItem => item.TrangThai)
                 </td>*@
             <td>
-                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.TenDangNhap }) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.TenDangNhap }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.TenDangNhap })
+                @Html.ActionLink("Edit", "Edit", new { id = item.TenDangNhap }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TenDangNhap }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TenDangNhap })
             </td>
         </tr>
     }

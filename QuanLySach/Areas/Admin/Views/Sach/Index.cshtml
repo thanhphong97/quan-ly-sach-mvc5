@@ -1,5 +1,7 @@
-﻿@model IEnumerable<QuanLySach.Models.Sach>
-
+﻿@*@model IEnumerable<QuanLySach.Models.Sach>*@
+@using PagedList.Mvc;
+@using QuanLySach.Models;
+@model PagedList.IPagedList<Sach>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
@@ -49,10 +51,11 @@
                 @Html.DisplayFor(modelItem => item.TenSach)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GiaTien)
+                @*@Html.DisplayFor(modelItem => item.GiaTien)*@
+                @string.Format("{0:0,00#}", item.GiaTien)
             </td>
             <td>
-                <textarea rows="10" cols="20">
+                <textarea rows="16" cols="24">
                     @Html.DisplayFor(modelItem => item.GioiThieuChung)
                 </textarea>
             </td>
@@ -60,7 +63,7 @@
                 <img width="100px" height="200px" src="~/Content/images/@item.AnhBia" />
             </td>
             <td>
-                <textarea rows="10" cols="20">
+                <textarea rows="16" cols="29">
                     @Html.DisplayFor(modelItem => item.NoiDungChiTiet)
                 </textarea>
             </td>
@@ -71,14 +74,17 @@
                 @Html.DisplayFor(modelItem => item.NgayPhatHanh)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.MaSach }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MaSach }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaSach })*@
                 @Html.ActionLink("Edit", "Edit", new { id = item.MaSach })<br />
                 @Html.ActionLink("Details", "Details", new { id = item.MaSach })<br />
                 @Html.ActionLink("Delete", "Delete", new { id = item.MaSach })
             </td>
         </tr>
     }
-
 </table>
+
+
+<div class="menuPhanTrang">
+    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount*@
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>

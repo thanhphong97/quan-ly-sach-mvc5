@@ -11,9 +11,17 @@ namespace QuanLySach.Controllers
     public class HomeController : Controller
     {
         private QuanLySachEntity db = new QuanLySachEntity();
+        //public ActionResult Index(int? page)
+        //{
+        //    int SLSanPham = 2;//số sản phẩm trên 1 trang
+        //    int SoTrang = (page ?? 1);// biển số trên trang
+
+        //    List<Sach> lsSach = db.Saches.OrderBy(n => n.NgayPhatHanh).Take(5).ToList();
+        //    return View(lsSach);
+        //}
         public ActionResult Index()
         {
-            List<Sach> lsSach = db.Saches.OrderBy(n => n.NgayPhatHanh).Take(5).ToList();
+            List<Sach> lsSach = db.Saches.OrderByDescending(n => n.NgayPhatHanh).Take(5).ToList();
             return View(lsSach);
         }
     }

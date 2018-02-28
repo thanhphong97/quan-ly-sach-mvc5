@@ -7,7 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QuanLySach.Models;
-
+using PagedList;
+using PagedList.Mvc;
 namespace QuanLySach.Areas.Admin.Controllers
 {
     public class SachController : Controller
@@ -15,10 +16,12 @@ namespace QuanLySach.Areas.Admin.Controllers
         private QuanLySachEntity db = new QuanLySachEntity();
 
         // GET: /Admin/Sach/
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 3;// số lượng sách trên một trang
+            int pageNumber = (page ?? 1);
             var saches = db.Saches.Include(s => s.LoaiSach);
-            return View(saches.ToList());
+            return View(saches.ToList().OrderByDescending(n=>n.NgayPhatHanh).ToPagedList(pageNumber,pageSize));
         }
 
         // GET: /Admin/Sach/Details/5

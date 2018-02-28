@@ -78,7 +78,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NgayPhatHanh, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayPhatHanh)
+                @Html.TextBoxFor(model => model.NgayPhatHanh, "{0:yyyy-MM-dd}", htmlAttributes: new { @type = "date" })
                 @Html.ValidationMessageFor(model => model.NgayPhatHanh)
             </div>
         </div>
