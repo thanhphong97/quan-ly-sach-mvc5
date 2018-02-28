@@ -1,0 +1,28 @@
+﻿@using QuanLySach.Models;
+@model List<Sach>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Tất cả</h1>
+
+@{
+    foreach (Sach item in Model)
+    {
+        <div class="book_container">
+            <div class="book_content">
+                <h2><a href="@Url.Action("NoiDungChiTiet","Book", new {@masach = item.MaSach })">@item.TenSach</a></h2>
+                <div class="book_mota">
+                    <p>@item.GioiThieuChung</p>
+                    <div class="book_info">
+                        <strong>Tác giả: </strong><span>@item.TacGia</span><br>
+                        <strong>Ngày phát hành: </strong><span>@Html.DisplayFor(model_item => item.NgayPhatHanh)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "DanhMuc_Partial";
+    
+}
+
+@using QuanLySach.Models
+@model List<LoaiSach>
+<ul>
+    @foreach (LoaiSach item in Model)
+    {
+        <li>
+            <a href="@Url.Action("ChiTietTheLoai","Book", new {@maloai = item.MaLoai, @tenloai = item.TenLoai})">@item.TenLoai</a>
+        </li>
+    }
+</ul>
+
+
+

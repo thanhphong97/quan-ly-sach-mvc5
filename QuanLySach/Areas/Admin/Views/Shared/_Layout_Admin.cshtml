@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/admin-style.css">
+    <script src="~/plugin/ckeditor/ckeditor.js"></script>
+    <title>Admin Home</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ADMIN HOME</h1>
+        </header>
+
+        <div class="main-content">
+            <nav class="nav">
+                <ul>
+                    <li><a href="@Url.Action("Index","TaiKhoan")">Tài khoản</a></li>
+                    <li><a href="@Url.Action("Index","LoaiSach")">Thể loại sách</a></li>
+                    <li><a href="@Url.Action("Index","Sach")">Sách</a></li>
+                    <li><a href="@Url.Action("Index","BinhLuan")">Bình luận</a></li>
+                </ul>
+            </nav>
+
+            <div class="content">
+                @RenderBody()
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

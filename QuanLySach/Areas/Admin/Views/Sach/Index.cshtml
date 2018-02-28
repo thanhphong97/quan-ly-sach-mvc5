@@ -1,0 +1,84 @@
+﻿@model IEnumerable<QuanLySach.Models.Sach>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Quản lý sách</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="tbSach">
+    <tr>
+        <th>
+            Tên loại
+        </th>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Giá tiền
+        </th>
+        <th>
+            Giới thiệu chung
+        </th>
+        <th>
+            Ảnh bìa
+        </th>
+        <th>
+            Nội dung chi tiết
+        </th>
+        <th>
+            Tác giả
+        </th>
+        <th>
+            Ngày phát hành
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td id="tenloai">
+                @Html.DisplayFor(modelItem => item.LoaiSach.TenLoai)
+            </td>
+            <td id="tensach">
+                @Html.DisplayFor(modelItem => item.TenSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaTien)
+            </td>
+            <td>
+                <textarea rows="10" cols="20">
+                    @Html.DisplayFor(modelItem => item.GioiThieuChung)
+                </textarea>
+            </td>
+            <td>
+                <img width="100px" height="200px" src="~/Content/images/@item.AnhBia" />
+            </td>
+            <td>
+                <textarea rows="10" cols="20">
+                    @Html.DisplayFor(modelItem => item.NoiDungChiTiet)
+                </textarea>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TacGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayPhatHanh)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.MaSach }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaSach }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaSach })*@
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaSach })<br />
+                @Html.ActionLink("Details", "Details", new { id = item.MaSach })<br />
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaSach })
+            </td>
+        </tr>
+    }
+
+</table>

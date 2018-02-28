@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "NoiDungChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using QuanLySach.Models;
+@model Sach
+<div class="book_container">
+    <div class="book_content">
+        <h2>@Model.TenSach</h2>
+        <div class="book_mota">
+            <p>@Model.NoiDungChiTiet</p>
+            <div class="book_info">
+                <strong>Tác giả: </strong><span>@Model.TacGia</span><br>
+                <strong>Ngày phát hành: </strong><span>@Model.NgayPhatHanh</span>
+            </div>
+            <div class="image_book">
+                <img src="@Url.Content("~/Content/images/"+ @Model.AnhBia)">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
