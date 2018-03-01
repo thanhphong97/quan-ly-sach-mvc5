@@ -10,33 +10,33 @@
 <h2>Quản lý sách</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo sách mới", "Create")
 </p>
 <table class="table" id="tbSach">
     <tr>
         <th>
-            Tên loại
+            @Html.DisplayNameFor(model => model.First().MaLoai)
         </th>
         <th>
-            Tên sách
+            @Html.DisplayNameFor(model => model.First().TenSach)
         </th>
         <th>
-            Giá tiền
+            @Html.DisplayNameFor(model => model.First().GiaTien)
         </th>
         <th>
-            Giới thiệu chung
+            @Html.DisplayNameFor(model => model.First().GioiThieuChung)
         </th>
         <th>
-            Ảnh bìa
+            @Html.DisplayNameFor(model => model.First().AnhBia)
         </th>
         <th>
-            Nội dung chi tiết
+            @Html.DisplayNameFor(model => model.First().NoiDungChiTiet)
         </th>
         <th>
-            Tác giả
+            @Html.DisplayNameFor(model => model.First().TacGia)
         </th>
         <th>
-            Ngày phát hành
+           @Html.DisplayNameFor(model => model.First().NgayPhatHanh)
         </th>
         <th></th>
     </tr>

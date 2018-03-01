@@ -10,6 +10,8 @@
     <div class="container">
         <header>
             <h1>ADMIN HOME</h1>
+            <h3 id="adminName">Xin chào: @Session["TaiKhoan"].ToString()</h3>
+            <h6><a href="@Url.Action("Logout","AdminHome")">Logout</a></h6>
         </header>
 
         <div class="main-content">

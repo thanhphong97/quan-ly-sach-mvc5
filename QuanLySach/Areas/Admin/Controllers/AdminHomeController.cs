@@ -14,5 +14,12 @@ namespace QuanLySach.Areas.Admin.Controllers
         {
             return RedirectToAction("Index","Sach");
         }
+        public ActionResult Logout()
+        {
+            Session.Remove("TaiKhoan");
+            if(Session["TaiKhoan"] != null)
+                return RedirectToAction("Index", "AdminHome");
+            return RedirectToAction("Index","../Home");
+        }
 	}
 }

@@ -158,32 +158,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\admin-style.css" />
     <Content Include="Content\css\style.css" />
-    <Content Include="Content\images\DuLieu\Truyen\1.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\chotoi1vedituoitho.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Conan001.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Conan002.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Conan003.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Conan004.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Conan005.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Doraemon001.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Doraemon002.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Doraemon003.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Doraemon004.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Doraemon005.jpg" />
     <Content Include="Content\images\DuLieu\Truyen\hp1.jpg" />
     <Content Include="Content\images\DuLieu\Truyen\hp2.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\hp3.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\hp4.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\hp5.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\hp6.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\hp7.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\hp8.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Nobita_lac_vao_xu_quy.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Nobita_o_xu_so_nghin_le_mot_dem.jpg" />
     <Content Include="Content\images\DuLieu\Truyen\Nobita_tay_du_ky.jpg" />
     <Content Include="Content\images\DuLieu\Truyen\Nobita_va_nhung_hiep_si_khong_gian.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\Tan_nobita_va_nuoc_nhat_nguyen_thuy.jpg" />
-    <Content Include="Content\images\DuLieu\Truyen\toithayhoavangtrencoxanh.jpg" />
     <Content Include="Content\images\slide2.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -545,6 +523,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -563,8 +543,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Book\NoiDungChiTiet.cshtml" />
-    <Content Include="Views\Book\ChiTietTheLoai.cshtml" />
     <Content Include="Views\Categories\DanhMuc_Partial.cshtml" />
+    <Content Include="Views\Book\ChiTietTheLoai.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

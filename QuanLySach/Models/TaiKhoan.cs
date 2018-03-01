@@ -15,14 +15,17 @@ namespace QuanLySach.Models
             BinhLuans = new HashSet<BinhLuan>();
         }
 
+        [Display(Name = "Tên đăng nhập")]
         [Key]
         [StringLength(20)]
         public string TenDangNhap { get; set; }
 
+        [Display(Name = "Mật khẩu")]
         [Required]
         [StringLength(50)]
         public string MatKhau { get; set; }
 
+        [Display(Name = "Trạng thái")]
         public int TrangThai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

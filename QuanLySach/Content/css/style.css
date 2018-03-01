@@ -3,7 +3,9 @@ body {
     padding: 0;
     font-size: 20px;
 }
-
+.menu ul li {
+    color:white;
+}
 header {
 }
 

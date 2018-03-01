@@ -5,7 +5,9 @@ header {
     line-height: 5.5em;
     padding: 10px;
 }
-
+#adminName{
+    text-align: right;
+}
 .main-content {
     overflow: hidden;
 }

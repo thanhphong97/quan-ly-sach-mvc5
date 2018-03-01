@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using QuanLySach.Models;
 using PagedList;
 using PagedList.Mvc;
+using System.IO;
 namespace QuanLySach.Areas.Admin.Controllers
 {
     public class SachController : Controller
@@ -51,8 +52,21 @@ namespace QuanLySach.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="MaSach,TenSach,GiaTien,GioiThieuChung,MaLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach)
+        public ActionResult Create([Bind(Include="MaSach,TenSach,GiaTien,GioiThieuChung,MaLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach, HttpPostedFileBase fileUpload)
         {
+            var fileName = Path.GetFileName(fileUpload.FileName);//tên của file
+            //nối đường dẫn nơi lưu ảnh + tên của file
+            var filePath = Path.Combine(Server.MapPath("~/Content/images/DuLieu/Truyen"), fileName);
+            //Kiểm tra hình ảnh đã tồn tại hay chưa
+            if (System.IO.File.Exists(filePath))
+            {
+                ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+            }
+            else
+            {
+                fileUpload.SaveAs(filePath);
+                sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
+            }
             if (ModelState.IsValid)
             {
                 db.Saches.Add(sach);
@@ -86,8 +100,21 @@ namespace QuanLySach.Areas.Admin.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="MaSach,TenSach,GiaTien,GioiThieuChung,MaLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach)
+        public ActionResult Edit([Bind(Include="MaSach,TenSach,GiaTien,GioiThieuChung,MaLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach, HttpPostedFileBase fileUpload)
         {
+            var fileName = Path.GetFileName(fileUpload.FileName);//tên của file
+            //nối đường dẫn nơi lưu ảnh + tên của file
+            var filePath = Path.Combine(Server.MapPath("~/Content/images/DuLieu/Truyen"), fileName);
+            //Kiểm tra hình ảnh đã tồn tại hay chưa
+            if(System.IO.File.Exists(filePath))
+            {
+                ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+            }
+            else
+            {
+                fileUpload.SaveAs(filePath);
+                sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(sach).State = EntityState.Modified;

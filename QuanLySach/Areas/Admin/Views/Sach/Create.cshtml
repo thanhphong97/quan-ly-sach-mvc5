@@ -7,7 +7,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Sach", FormMethod.Post, new {@enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MaLoai, "MaLoai", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MaLoai, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("MaLoai", String.Empty)
                 @Html.ValidationMessageFor(model => model.MaLoai)
@@ -51,8 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AnhBia, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AnhBia)
-                @Html.ValidationMessageFor(model => model.AnhBia)
+                <input type="file" name="fileUpload" />
             </div>
         </div>
 

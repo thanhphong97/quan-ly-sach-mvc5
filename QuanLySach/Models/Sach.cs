@@ -1,4 +1,4 @@
-namespace QuanLySach.Models
+﻿namespace QuanLySach.Models
 {
     using System;
     using System.Collections.Generic;
@@ -15,31 +15,39 @@ namespace QuanLySach.Models
             BinhLuans = new HashSet<BinhLuan>();
         }
 
+        [Display(Name="Mã sách")]
         [Key]
         public int MaSach { get; set; }
 
         [Required]
+        [Display(Name="Tên sách")]
         [StringLength(250)]
         public string TenSach { get; set; }
 
+         [Display(Name = "Giá tiền")]
         public int? GiaTien { get; set; }
-        
-        
+
+         [Display(Name = "Giới thiệu chung")]
         [UIHint("CKEditor")]
         [Required]
         public string GioiThieuChung { get; set; }
 
+        [Display(Name = "Mã Loại")]
         public int MaLoai { get; set; }
 
+         [Display(Name = "Ảnh bìa")]
         public string AnhBia { get; set; }
 
+         [Display(Name = "Nội dung chi tiết")]
         [UIHint("CKEditor")]
         [Required]
         public string NoiDungChiTiet { get; set; }
 
+         [Display(Name = "Tác giả")]
         [StringLength(250)]
         public string TacGia { get; set; }
 
+        [Display(Name = "Ngày phát hành")]
         [Column(TypeName = "date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
@@ -47,7 +55,7 @@ namespace QuanLySach.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BinhLuan> BinhLuans { get; set; }
-
+         [Display(Name = "Loại sách")]
         public virtual LoaiSach LoaiSach { get; set; }
     }
 }

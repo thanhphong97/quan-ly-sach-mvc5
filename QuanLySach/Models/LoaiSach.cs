@@ -15,9 +15,11 @@ namespace QuanLySach.Models
             Saches = new HashSet<Sach>();
         }
 
+        [Display(Name = "Mã loại")]
         [Key]
         public int MaLoai { get; set; }
 
+        [Display(Name = "Tên loại")]
         [Required]
         [StringLength(250)]
         public string TenLoai { get; set; }

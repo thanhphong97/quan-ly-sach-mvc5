@@ -20,7 +20,7 @@ namespace QuanLySach.Controllers
             var sach = db.Saches.SingleOrDefault(n => n.MaSach == masach);
             return View(sach);
         }
-        public ViewResult ChiTietTheLoai(int maloai = 0, string tenloai = null)
+        public PartialViewResult ChiTietTheLoai(int maloai = 0, string tenloai = null)
         {
             List<Sach> lsSach = new List<Sach>();
             if (maloai == 0)
@@ -37,7 +37,7 @@ namespace QuanLySach.Controllers
                 ViewBag.ThongBao = "Không có sách nào thuộc chủ đề";
             }
             ViewBag.TenLoai = tenloai;
-            return View(lsSach);
+            return PartialView("ChiTietTheLoai",lsSach);
         }
 	}
 }

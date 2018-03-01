@@ -1,37 +1,36 @@
-﻿
-@{
-    ViewBag.Title = "ChiTietTheLoai";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@using QuanLySach.Models;
+﻿@using QuanLySach.Models;
 @model List<Sach>
 @{
-    ViewBag.Title = ViewBag.TenLoai;
+    ViewBag.Title = "ChiTietTheLoai";
 }
-<h1>@ViewBag.TenLoai</h1>
-@{
-    if (@Model.Count == 0)
-    {
-        <h1>@ViewBag.ThongBao</h1>
+    @{
+        ViewBag.Title = ViewBag.TenLoai;
     }
-}
+    <h1>@ViewBag.TenLoai</h1>
+    @{
+        if (@Model.Count == 0)
+        {
+            <h1>@ViewBag.ThongBao</h1>
+        }
+    }
 
-@{
-    foreach (Sach item in Model)
-    {
-        <div class="book_container">
-            <div class="book_content">
-                <h2><a href="@Url.Action("NoiDungChiTiet", "Book", new { @masach = item.MaSach })">@item.TenSach</a></h2>
-                <div class="book_mota">
-                    <p>@item.GioiThieuChung</p>
-                    <div class="book_info">
-                        <strong>Tác giả: </strong><span>@item.TacGia</span><br>
-                        <strong>Ngày phát hành: </strong><span>@string.Format("{0:dd/MM/yyyy}", @item.NgayPhatHanh)</span>
+    @{
+        foreach (Sach item in Model)
+        {
+            <div class="book_container">
+                <div class="book_content">
+                    <h2><a href="@Url.Action("NoiDungChiTiet", "Book", new { @masach = item.MaSach })">@item.TenSach</a></h2>
+                    <div class="book_mota">
+                        <p>@item.GioiThieuChung</p>
+                        <div class="book_info">
+                            <strong>Tác giả: </strong><span>@item.TacGia</span><br>
+                            <strong>Ngày phát hành: </strong><span>@string.Format("{0:dd/MM/yyyy}", @item.NgayPhatHanh)</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     }
-}
+
+
 

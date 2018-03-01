@@ -10,7 +10,14 @@
     @foreach (LoaiSach item in Model)
     {
         <li>
-            <a href="@Url.Action("ChiTietTheLoai","Book", new {@maloai = item.MaLoai, @tenloai = item.TenLoai})">@item.TenLoai</a>
+            @*<a href="@Url.Action("ChiTietTheLoai","Book", new {@maloai = item.MaLoai, @tenloai = item.TenLoai})">@item.TenLoai</a>*@
+
+            @Ajax.ActionLink(@item.TenLoai, "ChiTietTheLoai","Book", new { @maloai = item.MaLoai, @tenloai = item.TenLoai}, new AjaxOptions()
+       {
+           HttpMethod = "GET",
+           UpdateTargetId = "NoiDung",
+           InsertionMode = InsertionMode.Replace
+       })
         </li>
     }
 </ul>
