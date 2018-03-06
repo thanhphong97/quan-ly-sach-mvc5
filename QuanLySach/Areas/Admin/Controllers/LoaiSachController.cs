@@ -17,6 +17,8 @@ namespace QuanLySach.Areas.Admin.Controllers
         // GET: /Admin/LoaiSach/
         public ActionResult Index()
         {
+            if (Session["TaiKhoan"] == null)
+                return RedirectToAction("Index", "../Home");
             return View(db.LoaiSaches.ToList());
         }
 

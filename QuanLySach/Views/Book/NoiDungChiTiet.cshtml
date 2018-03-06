@@ -8,7 +8,7 @@
     <div class="book_content">
         <h2>@Model.TenSach</h2>
         <div class="book_mota">
-            <p>@Model.NoiDungChiTiet</p>
+            <p>@Html.Raw(@Model.NoiDungChiTiet)</p>
             <div class="book_info">
                 <strong>Tác giả: </strong><span>@Model.TacGia</span><br>
                 <strong>Ngày phát hành: </strong><span>@string.Format("{0:dd/MM/yyyy}", @Model.NgayPhatHanh)</span>
@@ -19,6 +19,10 @@
         </div>
     </div>
 </div>
+<br />
+@*Load commet*@
+@Html.Action("BinhLuan_Partial", "Comment")
+
 
 
 

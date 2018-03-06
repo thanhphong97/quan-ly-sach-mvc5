@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="~/Content/css/admin-style.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="~/plugin/ckeditor/ckeditor.js"></script>
     <title>Admin Home</title>
 </head>
@@ -10,8 +12,10 @@
     <div class="container">
         <header>
             <h1>ADMIN HOME</h1>
-            <h3 id="adminName">Xin chào: @Session["TaiKhoan"].ToString()</h3>
-            <h6><a href="@Url.Action("Logout","AdminHome")">Logout</a></h6>
+            <h3 id="adminName">
+                Xin chào: @Session["TaiKhoan"].ToString()
+            </h3>
+            <h6 id="logOut"><a href="@Url.Action("Logout","AdminHome")">Logout</a></h6>
         </header>
 
         <div class="main-content">

@@ -20,7 +20,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TenSach, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TenSach)
+                @*@Html.EditorFor(model => model.TenSach, new { @class = "form-control" })*@
+                <input type="text" name="TenSach" value="@Model.TenSach" class="form-control" />
                 @Html.ValidationMessageFor(model => model.TenSach)
             </div>
         </div>
@@ -46,10 +47,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AnhBia, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.AnhBia)
-                @Html.ValidationMessageFor(model => model.AnhBia)*@
+                @Html.EditorFor(model => model.AnhBia, new { htmlAttributes = new { @type = "hidden" } })
+                @*@Html.ValidationMessageFor(model => model.AnhBia)*@
                 @*Name của thẻ ipput phải trùng tên với tham số trên action edit*@
-                <input type="file" name="fileUpload" />
+                <input type="file" name="fileUpload"/>
             </div>
             @ViewBag.ThongBao
         </div>

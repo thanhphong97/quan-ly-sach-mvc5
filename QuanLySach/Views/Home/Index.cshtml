@@ -13,7 +13,7 @@
             <div class="book_content">
                 <h2><a href="@Url.Action("NoiDungChiTiet","Book", new {@masach = item.MaSach })">@item.TenSach</a></h2>
                 <div class="book_mota">
-                    <p>@item.GioiThieuChung</p>
+                    <p>@Html.Raw(@item.GioiThieuChung)</p>
                     <div class="book_info">
                         <strong>Tác giả: </strong><span>@item.TacGia</span><br>
                         <strong>Ngày phát hành: </strong><span>@Html.DisplayFor(model_item => item.NgayPhatHanh)</span>

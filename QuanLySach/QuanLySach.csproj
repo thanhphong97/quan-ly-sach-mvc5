@@ -140,6 +140,7 @@
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,7 +150,6 @@
     <Compile Include="Models\LoaiSach.cs" />
     <Compile Include="Models\QuanLySachEntity.cs" />
     <Compile Include="Models\Sach.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -545,6 +545,7 @@
     <Content Include="Views\Book\NoiDungChiTiet.cshtml" />
     <Content Include="Views\Categories\DanhMuc_Partial.cshtml" />
     <Content Include="Views\Book\ChiTietTheLoai.cshtml" />
+    <Content Include="Views\Comment\BinhLuan_Partial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

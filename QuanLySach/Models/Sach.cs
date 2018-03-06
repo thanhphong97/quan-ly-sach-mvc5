@@ -27,7 +27,7 @@
          [Display(Name = "Giá tiền")]
         public int? GiaTien { get; set; }
 
-         [Display(Name = "Giới thiệu chung")]
+        [Display(Name = "Giới thiệu chung")]
         [UIHint("CKEditor")]
         [Required]
         public string GioiThieuChung { get; set; }

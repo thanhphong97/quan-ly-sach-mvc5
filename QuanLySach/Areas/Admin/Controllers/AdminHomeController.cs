@@ -10,8 +10,11 @@ namespace QuanLySach.Areas.Admin.Controllers
     {
         //
         // GET: /Admin/AdminHome/
+        
         public ActionResult Index()
         {
+            //if (Session["TaiKhoan"] == null)
+            //    return RedirectToAction("Index", "../Home");
             return RedirectToAction("Index","Sach");
         }
         public ActionResult Logout()

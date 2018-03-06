@@ -17,8 +17,11 @@ namespace QuanLySach.Areas.Admin.Controllers
         private QuanLySachEntity db = new QuanLySachEntity();
 
         // GET: /Admin/Sach/
+        
         public ActionResult Index(int? page)
         {
+            if (Session["TaiKhoan"] == null)
+                return RedirectToAction("Index", "../Home");
             int pageSize = 3;// số lượng sách trên một trang
             int pageNumber = (page ?? 1);
             var saches = db.Saches.Include(s => s.LoaiSach);
@@ -54,21 +57,26 @@ namespace QuanLySach.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="MaSach,TenSach,GiaTien,GioiThieuChung,MaLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach, HttpPostedFileBase fileUpload)
         {
-            var fileName = Path.GetFileName(fileUpload.FileName);//tên của file
-            //nối đường dẫn nơi lưu ảnh + tên của file
-            var filePath = Path.Combine(Server.MapPath("~/Content/images/DuLieu/Truyen"), fileName);
-            //Kiểm tra hình ảnh đã tồn tại hay chưa
-            if (System.IO.File.Exists(filePath))
+            if(fileUpload == null)
             {
-                ViewBag.ThongBao = "Hình ảnh đã tồn tại";
-            }
-            else
-            {
-                fileUpload.SaveAs(filePath);
-                sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
+                ViewBag.ThongBao = "Vui lòng chọn hình ảnh";
+                return View();
             }
             if (ModelState.IsValid)
             {
+                var fileName = Path.GetFileName(fileUpload.FileName);//tên của file
+                //nối đường dẫn nơi lưu ảnh + tên của file
+                var filePath = Path.Combine(Server.MapPath("~/Content/images/DuLieu/Truyen"), fileName);
+                //Kiểm tra hình ảnh đã tồn tại hay chưa
+                if (System.IO.File.Exists(filePath))
+                {
+                    ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+                }
+                else
+                {
+                    fileUpload.SaveAs(filePath);
+                    sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
+                }
                 db.Saches.Add(sach);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -102,25 +110,31 @@ namespace QuanLySach.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="MaSach,TenSach,GiaTien,GioiThieuChung,MaLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach, HttpPostedFileBase fileUpload)
         {
-            var fileName = Path.GetFileName(fileUpload.FileName);//tên của file
-            //nối đường dẫn nơi lưu ảnh + tên của file
-            var filePath = Path.Combine(Server.MapPath("~/Content/images/DuLieu/Truyen"), fileName);
-            //Kiểm tra hình ảnh đã tồn tại hay chưa
-            if(System.IO.File.Exists(filePath))
-            {
-                ViewBag.ThongBao = "Hình ảnh đã tồn tại";
-            }
-            else
-            {
-                fileUpload.SaveAs(filePath);
-                sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
-            }
             if (ModelState.IsValid)
             {
+                if(fileUpload != null)
+                {
+                    var fileName = Path.GetFileName(fileUpload.FileName);//tên của file
+                    //nối đường dẫn nơi lưu ảnh + tên của file
+                    var filePath = Path.Combine(Server.MapPath("~/Content/images/DuLieu/Truyen"), fileName);
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+                    }
+                    else
+                    {
+                        fileUpload.SaveAs(filePath);
+
+                    }
+                    sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
+                }
                 db.Entry(sach).State = EntityState.Modified;
                 db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
+            //Kiểm tra hình ảnh đã tồn tại hay chưa
+            
             ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.MaLoai);
             return View(sach);
         }

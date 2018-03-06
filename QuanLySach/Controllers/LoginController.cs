@@ -11,10 +11,7 @@ namespace QuanLySach.Controllers
         //
         // GET: /Login/
         QuanLySachEntity db = new QuanLySachEntity();
-        //public ActionResult DangNhap_Partial(TaiKhoan tk)
-        //{
-        //    return PartialView();
-        //}
+       
         public ViewResult DangNhap()
         {
             return View();

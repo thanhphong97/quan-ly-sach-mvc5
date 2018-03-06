@@ -15,7 +15,6 @@ namespace QuanLySach.Models
         public virtual DbSet<BinhLuan> BinhLuans { get; set; }
         public virtual DbSet<LoaiSach> LoaiSaches { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

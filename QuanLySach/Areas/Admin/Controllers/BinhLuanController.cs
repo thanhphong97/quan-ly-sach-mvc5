@@ -17,6 +17,9 @@ namespace QuanLySach.Areas.Admin.Controllers
         // GET: /Admin/BinhLuan/
         public ActionResult Index()
         {
+            if (Session["TaiKhoan"] == null)
+                return RedirectToAction("Index", "../Home");
+
             var binhluans = db.BinhLuans.Include(b => b.Sach).Include(b => b.TaiKhoan);
             return View(binhluans.ToList());
         }
@@ -40,7 +43,7 @@ namespace QuanLySach.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.MaSach = new SelectList(db.Saches, "MaSach", "TenSach");
-            ViewBag.TenDangNhap = new SelectList(db.TaiKhoans, "TenDangNhap", "MatKhau");
+            ViewBag.TenDangNhap = new SelectList(db.TaiKhoans, "TenDangNhap", "TenDangNhap");
             return View();
         }
 

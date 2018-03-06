@@ -17,6 +17,7 @@ namespace QuanLySach.Controllers
         }
         public ViewResult NoiDungChiTiet(int masach = 0)
         {
+            Session["MaSach"] = masach;
             var sach = db.Saches.SingleOrDefault(n => n.MaSach == masach);
             return View(sach);
         }
