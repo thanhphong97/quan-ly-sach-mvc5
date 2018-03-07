@@ -20,15 +20,13 @@ namespace QuanLySach.Controllers
         public ActionResult DangNhap(FormCollection f)
         {
             string TaiKhoan = f["txtTaiKhoan"].ToString();
-            string MatKhau = f.Get("txtMatKhau").ToString();
+            string MatKhau = f["txtMatKhau"].ToString();
             TaiKhoan taikhoan = db.TaiKhoans.SingleOrDefault(tk => tk.TenDangNhap == TaiKhoan && tk.MatKhau == MatKhau);
-            if (taikhoan != null)
+            if (taikhoan != null && taikhoan.TrangThai == 2)
             {
-               
                 Session["TaiKhoan"] = taikhoan.TenDangNhap;
                 return RedirectToAction("AdminHome","Admin");
             }
-            //ViewBag.ThongBaoDangNhap = "Đăng nhập thất bại";
             return RedirectToAction("Index", "Home");
         }
 	}

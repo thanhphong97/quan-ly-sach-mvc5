@@ -8,19 +8,13 @@
 <h2>Quản lý tài khoản</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo tài khoản mới", "Create")
 </p>
 <table id="tbTaiKhoan" class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.First().TenDangNhap)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.First().MatKhau)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.TrangThai)
-            </th>*@
         <th>
         </th>
     </tr>
@@ -31,12 +25,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TenDangNhap)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatKhau)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.TrangThai)
-                </td>*@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.TenDangNhap }) |
                 @Html.ActionLink("Details", "Details", new { id = item.TenDangNhap }) |

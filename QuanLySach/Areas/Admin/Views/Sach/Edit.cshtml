@@ -34,13 +34,11 @@
             </div>
         </div>
 
-        
-
         <div class="form-group">
-            @Html.LabelFor(model => model.MaLoai, "MaLoai", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TheLoai, "MaLoai", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MaLoai", String.Empty)
-                @Html.ValidationMessageFor(model => model.MaLoai)
+                @Html.DropDownList("MaLoai", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TheLoai)
             </div>
         </div>
 
@@ -48,7 +46,7 @@
             @Html.LabelFor(model => model.AnhBia, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AnhBia, new { htmlAttributes = new { @type = "hidden" } })
-                @*@Html.ValidationMessageFor(model => model.AnhBia)*@
+                @Html.ValidationMessageFor(model => model.AnhBia)
                 @*Name của thẻ ipput phải trùng tên với tham số trên action edit*@
                 <input type="file" name="fileUpload"/>
             </div>

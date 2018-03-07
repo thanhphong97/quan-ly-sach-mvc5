@@ -54,6 +54,7 @@ namespace QuanLySach.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="ID,TenDangNhap,MaSach,ThoiGian,NoiDung")] BinhLuan binhluan)
         {
+            binhluan.ThoiGian = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.BinhLuans.Add(binhluan);

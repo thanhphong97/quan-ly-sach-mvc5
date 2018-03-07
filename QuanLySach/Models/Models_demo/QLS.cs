@@ -1,14 +1,14 @@
-namespace QuanLySach.Models
+namespace QuanLySach.Models.Models_demo
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class QuanLySachEntity : DbContext
+    public partial class QLS : DbContext
     {
-        public QuanLySachEntity()
-            : base("name=QuanLySachEntity")
+        public QLS()
+            : base("name=QLS")
         {
         }
 
@@ -19,6 +19,9 @@ namespace QuanLySach.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BinhLuan>()
+                .Property(e => e.TenDangNhap)
+                .IsUnicode(false);
 
             modelBuilder.Entity<LoaiSach>()
                 .HasMany(e => e.Saches)
@@ -32,11 +35,6 @@ namespace QuanLySach.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TaiKhoan>()
-                .HasMany(e => e.BinhLuans)
-                .WithRequired(e => e.TaiKhoan)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<TaiKhoan>()
                 .Property(e => e.TenDangNhap)
                 .IsUnicode(false);
 
@@ -44,9 +42,10 @@ namespace QuanLySach.Models
                 .Property(e => e.MatKhau)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<BinhLuan>()
-                .Property(e => e.TenDangNhap)
-                .IsUnicode(false);
+            modelBuilder.Entity<TaiKhoan>()
+                .HasMany(e => e.BinhLuans)
+                .WithRequired(e => e.TaiKhoan)
+                .WillCascadeOnDelete(false);
         }
     }
 }

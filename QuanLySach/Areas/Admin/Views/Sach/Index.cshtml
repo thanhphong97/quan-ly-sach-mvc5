@@ -15,7 +15,7 @@
 <table class="table" id="tbSach">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.First().MaLoai)
+            @Html.DisplayNameFor(model => model.First().TheLoai)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.First().TenSach)
@@ -51,7 +51,6 @@
                 @Html.DisplayFor(modelItem => item.TenSach)
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.GiaTien)*@
                 @string.Format("{0:0,00#}", item.GiaTien)
             </td>
             <td>

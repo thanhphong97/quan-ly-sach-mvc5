@@ -31,7 +31,7 @@ namespace QuanLySach.Controllers
             else
             {
                 LoaiSach loaisach = db.LoaiSaches.SingleOrDefault(n => n.MaLoai == maloai);
-                lsSach = db.Saches.Where(n => n.MaLoai == maloai).ToList();
+                lsSach = db.Saches.Where(n => n.TheLoai == maloai).ToList();
             }
             if (lsSach.Count == 0)
             {

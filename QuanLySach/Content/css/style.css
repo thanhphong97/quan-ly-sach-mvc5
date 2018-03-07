@@ -135,11 +135,17 @@ header {
     color: blue;
 }
 .image_book img{
- 	    width: 20%;
-    height: 220px;
+ 	width: 36%;
+    height: 400px;
     margin: 17px 0px 21px 50px;
  }
-/*footer*/
+#list_comment strong{
+    font-size: 18px;
+}
+#list_comment i{
+    font-size: 14px;
+    color:#949494;
+}
 .footer {
     width: 100%;
     background: red;

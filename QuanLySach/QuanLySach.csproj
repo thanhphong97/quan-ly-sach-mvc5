@@ -148,6 +148,11 @@
     </Compile>
     <Compile Include="Models\BinhLuan.cs" />
     <Compile Include="Models\LoaiSach.cs" />
+    <Compile Include="Models\Models_demo\BinhLuan.cs" />
+    <Compile Include="Models\Models_demo\LoaiSach.cs" />
+    <Compile Include="Models\Models_demo\QLS.cs" />
+    <Compile Include="Models\Models_demo\Sach.cs" />
+    <Compile Include="Models\Models_demo\TaiKhoan.cs" />
     <Compile Include="Models\QuanLySachEntity.cs" />
     <Compile Include="Models\Sach.cs" />
     <Compile Include="Models\TaiKhoan.cs" />

@@ -21,8 +21,9 @@ namespace QuanLySach.Controllers
         //}
         public ActionResult Index()
         {
-            List<Sach> lsSach = db.Saches.OrderByDescending(n => n.NgayPhatHanh).Take(5).ToList();
-            return View(lsSach);
+            //List<Sach> lsSach = db.Saches.OrderByDescending(n => n.NgayPhatHanh).Take(5).ToList();
+            List<Sach> lsSachs = db.Saches.OrderByDescending(n => n.NgayPhatHanh).Take(5).ToList();
+            return View(lsSachs);
         }
     }
 }

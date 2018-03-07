@@ -81,8 +81,7 @@ namespace QuanLySach.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.MaLoai);
+            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
             return View(sach);
         }
 
@@ -98,7 +97,7 @@ namespace QuanLySach.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.MaLoai);
+            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
             return View(sach);
         }
 
@@ -135,7 +134,7 @@ namespace QuanLySach.Areas.Admin.Controllers
             }
             //Kiểm tra hình ảnh đã tồn tại hay chưa
             
-            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.MaLoai);
+            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
             return View(sach);
         }
 
