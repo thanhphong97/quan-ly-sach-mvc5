@@ -23,7 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.First().GiaTien)
         </th>
-        <th>
+        <th style="width:20%">
             @Html.DisplayNameFor(model => model.First().GioiThieuChung)
         </th>
         <th>
@@ -55,17 +55,13 @@
                 @string.Format("{0:0,00#}", item.GiaTien)
             </td>
             <td>
-                <textarea rows="16" cols="24">
-                    @Html.DisplayFor(modelItem => item.GioiThieuChung)
-                </textarea>
+                <div class="noidungsach">@Html.Raw(item.GioiThieuChung)</div>
             </td>
             <td>
                 <img width="100px" height="200px" src="~/Content/images/@item.AnhBia" />
             </td>
             <td>
-                <textarea rows="16" cols="29">
-                    @Html.DisplayFor(modelItem => item.NoiDungChiTiet)
-                </textarea>
+                <div class="noidungsach">@Html.Raw(item.NoiDungChiTiet)</div>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TacGia)
@@ -84,7 +80,5 @@
 
 
 <div class="menuPhanTrang">
-    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount*@
-
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
 </div>

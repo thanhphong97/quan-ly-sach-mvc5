@@ -1,18 +1,20 @@
 ﻿@*comment*@
 @using QuanLySach.Models;
 @model List<BinhLuan>
-@foreach (var item in Model)
-{
-    <div class="form-group">
-        <div>
-            <strong>@Html.DisplayFor((modelItem => item.TenDangNhap))</strong>
-            @Html.DisplayFor(modelItem => item.ThoiGian)
+<div id="list_comment">
+    @foreach (var item in Model)
+    {
+        <div class="form-group">
+            <div>
+                <strong>@Html.DisplayFor((modelItem => item.TenDangNhap))</strong>
+                @Html.DisplayFor(modelItem => item.ThoiGian)
+            </div>
+            @Html.DisplayFor(modelItem => item.NoiDung)
         </div>
-        @Html.DisplayFor(modelItem => item.NoiDung)
-    </div>
-}
-
-@using(Html.BeginForm("BinhLuan","Comment",FormMethod.Post))
+    }
+</div>
+ 
+@*@using(Html.BeginForm("BinhLuan","Comment",FormMethod.Post))
 {
     <div id="commentArea">
     <div>
@@ -22,5 +24,11 @@
         <input class="btn btn-primary" type="submit" name="btn_comment" value="Comment">
     </div>
 </div>
-}
+}*@
 
+@*@Ajax.ActionLink("Commet", "BinhLuan", "Comment", new AjaxOptions()
+       {
+           HttpMethod = "POST",
+           UpdateTargetId = "comment_area",
+           InsertionMode = InsertionMode.InsertAfter
+       })*@

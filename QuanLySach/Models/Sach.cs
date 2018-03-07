@@ -24,7 +24,8 @@
         [StringLength(250)]
         public string TenSach { get; set; }
 
-         [Display(Name = "Giá tiền")]
+        [Range(1000, 9999999)]
+        [Display(Name = "Giá tiền")]
         public int? GiaTien { get; set; }
 
         [Display(Name = "Giới thiệu chung")]

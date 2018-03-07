@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+
 }
 
 <h2>Details</h2>
@@ -20,11 +21,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TaiKhoan.MatKhau)
+            @Html.DisplayNameFor(model => model.TaiKhoan.TenDangNhap)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TaiKhoan.MatKhau)
+            @Html.DisplayFor(model => model.TaiKhoan.TenDangNhap)
         </dd>
 
         <dt>
@@ -35,9 +36,17 @@
             @Html.DisplayFor(model => model.ThoiGian)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

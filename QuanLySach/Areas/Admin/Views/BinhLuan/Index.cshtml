@@ -1,11 +1,12 @@
-﻿@model IEnumerable<QuanLySach.Models.BinhLuan>
-
+﻿@*@model IEnumerable<QuanLySach.Models.BinhLuan>*@
+@using PagedList.Mvc;
+@using QuanLySach.Models;
+@model PagedList.IPagedList<BinhLuan>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
 }
-
-<h2>Quản lý bình luận</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,15 +14,17 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Sach.TenSach)
+            @Html.DisplayNameFor(model => model.First().Sach.TenSach)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TaiKhoan.MatKhau)
+            @Html.DisplayNameFor(model => model.First().TaiKhoan.TenDangNhap)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ThoiGian)
+            @Html.DisplayNameFor(model => model.First().ThoiGian)
         </th>
-        <th>@Html.DisplayNameFor(model => model.NoiDung)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NoiDung)
+        </th>
         <th></th>
     </tr>
 
@@ -40,11 +43,13 @@
             @Html.DisplayFor(modelItem => item.NoiDung)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
-
 </table>
+<div class="menuPhanTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>

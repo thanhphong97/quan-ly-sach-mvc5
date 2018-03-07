@@ -21,7 +21,28 @@
 </div>
 <br />
 @*Load commet*@
-@Html.Action("BinhLuan_Partial", "Comment")
+<div id="comment_List">
+    @Html.Action("BinhLuan_Partial", "Comment")
+</div>
+@using (Ajax.BeginForm("BinhLuan", "Comment", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "list_comment",
+    InsertionMode = InsertionMode.Replace,
+    //OnSuccess = "ClearTextArea"
+}))
+{
+    <div id="commentArea">
+        <div>
+            <textarea class="form-control" style="width: 100%; height: 100px;" name="binhluan" id="binhluan" placeholder="Your comment. . . . . . . . . . ."></textarea>
+        </div>
+        <div>
+            <input class="btn btn-primary" onclick="setTimeout(clearContent, 1)" type="submit" name="btn_comment" value="Comment">
+        </div>
+    </div>
+}
+
+
 
 
 

@@ -163,6 +163,7 @@
     <Content Include="Content\images\DuLieu\Truyen\Nobita_tay_du_ky.jpg" />
     <Content Include="Content\images\DuLieu\Truyen\Nobita_va_nhung_hiep_si_khong_gian.jpg" />
     <Content Include="Content\images\slide2.jpg" />
+    <Content Include="Content\js\script.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -497,11 +498,6 @@
     <Content Include="Areas\Admin\Views\LoaiSach\Details.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSach\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSach\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\BinhLuan\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\BinhLuan\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\BinhLuan\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\BinhLuan\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\BinhLuan\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="plugin\ckeditor\CHANGES.md" />
     <Content Include="plugin\ckeditor\LICENSE.md" />
@@ -520,6 +516,11 @@
     <Content Include="plugin\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="plugin\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="plugin\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\Admin\Views\BinhLuan\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BinhLuan\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BinhLuan\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\BinhLuan\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BinhLuan\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -27,12 +27,17 @@ namespace QuanLySach.Controllers
 
             return PartialView(lsBinhLuan);
         }
+        [HttpGet]
+        public PartialViewResult BinhLuan_Partial()
+        {
+            List<BinhLuan> lsBinhLuan = LayBinhLuan_TheoSach((int)Session["MaSach"]);
+            return PartialView("BinhLuan_Partial",lsBinhLuan);
+        }
         [HttpPost]
-        public ActionResult BinhLuan(FormCollection f)
+        public PartialViewResult BinhLuan(FormCollection f)
         {
             BinhLuan binhluan = new BinhLuan();
             int masach = (int)Session["MaSach"];
-
             binhluan.NoiDung = f["binhluan"].ToString();
             binhluan.MaSach = masach;
             binhluan.ThoiGian = DateTime.Now;
@@ -49,8 +54,17 @@ namespace QuanLySach.Controllers
                 db.BinhLuans.Add(binhluan);
                 db.SaveChanges();
             }
-            Session.Remove("MaSach");
-            return RedirectToAction("NoiDungChiTiet", "Book", new { @masach = masach });
+            ModelState.Clear();
+            List<BinhLuan> lsBinhLuan = LayBinhLuan_TheoSach(masach);
+            return PartialView("BinhLuan_Partial",lsBinhLuan);
+            //return RedirectToAction("NoiDungChiTiet", "Book", new { @masach = masach });
         }
+        public List<BinhLuan> LayBinhLuan_TheoSach(int masach)
+        {
+            List<BinhLuan> lsBinhLuan = new List<BinhLuan>();
+            lsBinhLuan = db.BinhLuans.OrderByDescending(n => n.ThoiGian).Where(m => m.MaSach == masach).ToList();
+            return lsBinhLuan;
+        }
+
     }
 }

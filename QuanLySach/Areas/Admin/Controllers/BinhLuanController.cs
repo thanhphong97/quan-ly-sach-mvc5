@@ -7,7 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QuanLySach.Models;
-
+using PagedList;
+using PagedList.Mvc;
 namespace QuanLySach.Areas.Admin.Controllers
 {
     public class BinhLuanController : Controller
@@ -15,17 +16,16 @@ namespace QuanLySach.Areas.Admin.Controllers
         private QuanLySachEntity db = new QuanLySachEntity();
 
         // GET: /Admin/BinhLuan/
-        public ActionResult Index()
+        public ActionResult Index(int ? page)
         {
-            if (Session["TaiKhoan"] == null)
-                return RedirectToAction("Index", "../Home");
-
+            int pageSize = 10;// số lượng bình luận trên một trang
+            int pageNumber = (page ?? 1);
             var binhluans = db.BinhLuans.Include(b => b.Sach).Include(b => b.TaiKhoan);
-            return View(binhluans.ToList());
+            return View(binhluans.ToList().OrderByDescending(n => n.ThoiGian).ToPagedList(pageNumber,pageSize));
         }
-
+        
         // GET: /Admin/BinhLuan/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -52,7 +52,7 @@ namespace QuanLySach.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="TenDangNhap,MaSach,ThoiGian")] BinhLuan binhluan)
+        public ActionResult Create([Bind(Include="ID,TenDangNhap,MaSach,ThoiGian,NoiDung")] BinhLuan binhluan)
         {
             if (ModelState.IsValid)
             {
@@ -62,12 +62,12 @@ namespace QuanLySach.Areas.Admin.Controllers
             }
 
             ViewBag.MaSach = new SelectList(db.Saches, "MaSach", "TenSach", binhluan.MaSach);
-            ViewBag.TenDangNhap = new SelectList(db.TaiKhoans, "TenDangNhap", "MatKhau", binhluan.TenDangNhap);
+            ViewBag.TenDangNhap = new SelectList(db.TaiKhoans, "TenDangNhap", "TenDangNhap", binhluan.TenDangNhap);
             return View(binhluan);
         }
 
         // GET: /Admin/BinhLuan/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -79,7 +79,7 @@ namespace QuanLySach.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.MaSach = new SelectList(db.Saches, "MaSach", "TenSach", binhluan.MaSach);
-            ViewBag.TenDangNhap = new SelectList(db.TaiKhoans, "TenDangNhap", "MatKhau", binhluan.TenDangNhap);
+            ViewBag.TenDangNhap = new SelectList(db.TaiKhoans, "TenDangNhap", "TenDangNhap", binhluan.TenDangNhap);
             return View(binhluan);
         }
 
@@ -88,7 +88,7 @@ namespace QuanLySach.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="TenDangNhap,MaSach,ThoiGian")] BinhLuan binhluan)
+        public ActionResult Edit([Bind(Include="ID,TenDangNhap,MaSach,ThoiGian,NoiDung")] BinhLuan binhluan)
         {
             if (ModelState.IsValid)
             {
@@ -97,12 +97,12 @@ namespace QuanLySach.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.MaSach = new SelectList(db.Saches, "MaSach", "TenSach", binhluan.MaSach);
-            ViewBag.TenDangNhap = new SelectList(db.TaiKhoans, "TenDangNhap", "MatKhau", binhluan.TenDangNhap);
+            ViewBag.TenDangNhap = new SelectList(db.TaiKhoans, "TenDangNhap", "TenDangNhap", binhluan.TenDangNhap);
             return View(binhluan);
         }
 
         // GET: /Admin/BinhLuan/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -119,7 +119,7 @@ namespace QuanLySach.Areas.Admin.Controllers
         // POST: /Admin/BinhLuan/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             BinhLuan binhluan = db.BinhLuans.Find(id);
             db.BinhLuans.Remove(binhluan);

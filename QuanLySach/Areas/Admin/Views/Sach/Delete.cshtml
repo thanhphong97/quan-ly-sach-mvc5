@@ -41,7 +41,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GioiThieuChung)
+            @Html.Raw(Model.GioiThieuChung)
         </dd>
 
         <dt>
@@ -49,7 +49,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AnhBia)
+            <img src="@Url.Content("~/Content/images/" + @Model.AnhBia)" />
         </dd>
 
         <dt>
@@ -57,7 +57,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoiDungChiTiet)
+            @Html.Raw(Model.NoiDungChiTiet)
         </dd>
 
         <dt>
