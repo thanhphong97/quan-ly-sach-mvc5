@@ -15,13 +15,14 @@ namespace QuanLySach.Models
             BinhLuans = new HashSet<BinhLuan>();
         }
 
+        [Required(ErrorMessage="Nhập tên đăng nhập hộ tao")]
         [Display(Name = "Tên đăng nhập")]
         [Key]
         [StringLength(20)]
         public string TenDangNhap { get; set; }
 
         [Display(Name = "Mật khẩu")]
-        [Required]
+        [Required(ErrorMessage = "Nhập mật khẩu hộ tao")]
         [StringLength(50)]
         public string MatKhau { get; set; }
 

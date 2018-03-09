@@ -42,7 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LoaiSach,"Loại sách", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MaLoai", null, new { @class = "form-control" } )
+                @Html.DropDownList("TheLoai", null, new { @class = "form-control" })
 
                 @Html.ValidationMessageFor(model => model.LoaiSach)
             </div>
@@ -58,7 +58,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NoiDungChiTiet, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.GioiThieuChung, new { @class = "ckeditor", @name = "editor1" })
+                @Html.TextAreaFor(model => model.NoiDungChiTiet, new { @class = "ckeditor", @name = "editor2" })
                 @Html.ValidationMessageFor(model => model.NoiDungChiTiet)
             </div>
         </div>
@@ -88,5 +88,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Trở lại danh sách", "Index")
 </div>

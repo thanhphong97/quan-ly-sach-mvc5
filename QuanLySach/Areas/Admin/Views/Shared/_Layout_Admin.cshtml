@@ -13,11 +13,10 @@
         <header>
             <h1>ADMIN HOME</h1>
             <h3 id="adminName">
-                Xin chào: @Session["TaiKhoan"].ToString()
+                Xin chào: @*@Session["TaiKhoan"].ToString()*@
             </h3>
             <h6 id="logOut"><a href="@Url.Action("Logout","AdminHome")">Logout</a></h6>
         </header>
-
         <div class="main-content">
             <nav class="nav">
                 <ul>
@@ -27,7 +26,6 @@
                     <li><a href="@Url.Action("Index","BinhLuan")">Bình luận</a></li>
                 </ul>
             </nav>
-
             <div class="content">
                 @RenderBody()
             </div>

@@ -50,6 +50,7 @@ namespace QuanLySach.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                taikhoan.TrangThai = 1;
                 db.TaiKhoans.Add(taikhoan);
                 db.SaveChanges();
                 return RedirectToAction("Index");

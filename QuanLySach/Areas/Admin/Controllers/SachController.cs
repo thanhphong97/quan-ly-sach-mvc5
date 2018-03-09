@@ -46,7 +46,7 @@ namespace QuanLySach.Areas.Admin.Controllers
         // GET: /Admin/Sach/Create
         public ActionResult Create()
         {
-            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai");
+            ViewBag.TheLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai");
             return View();
         }
 
@@ -54,13 +54,13 @@ namespace QuanLySach.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="MaSach,TenSach,GiaTien,GioiThieuChung,MaLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach, HttpPostedFileBase fileUpload)
+        public ActionResult Create([Bind(Include = "MaSach,TenSach,GiaTien,GioiThieuChung,TheLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach, HttpPostedFileBase fileUpload)
         {
             if(fileUpload == null)
             {
                 ViewBag.ThongBao = "Vui lòng chọn hình ảnh";
-                return View();
             }
             if (ModelState.IsValid)
             {
@@ -71,17 +71,18 @@ namespace QuanLySach.Areas.Admin.Controllers
                 if (System.IO.File.Exists(filePath))
                 {
                     ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+                    return View(sach);
                 }
                 else
                 {
                     fileUpload.SaveAs(filePath);
-                    sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
                 }
+                sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
                 db.Saches.Add(sach);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
+            ViewBag.TheLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
             return View(sach);
         }
 
@@ -97,7 +98,7 @@ namespace QuanLySach.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
+            ViewBag.TheLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
             return View(sach);
         }
 
@@ -107,11 +108,9 @@ namespace QuanLySach.Areas.Admin.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="MaSach,TenSach,GiaTien,GioiThieuChung,MaLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach, HttpPostedFileBase fileUpload)
+        public ActionResult Edit([Bind(Include = "MaSach,TenSach,GiaTien,GioiThieuChung,TheLoai,AnhBia,NoiDungChiTiet,TacGia,NgayPhatHanh")] Sach sach, HttpPostedFileBase fileUpload)
         {
-            if (ModelState.IsValid)
-            {
-                if(fileUpload != null)
+                if (fileUpload != null)
                 {
                     var fileName = Path.GetFileName(fileUpload.FileName);//tên của file
                     //nối đường dẫn nơi lưu ảnh + tên của file
@@ -127,14 +126,14 @@ namespace QuanLySach.Areas.Admin.Controllers
                     }
                     sach.AnhBia = "DuLieu\\Truyen\\" + fileName;
                 }
-                db.Entry(sach).State = EntityState.Modified;
-                db.SaveChanges();
-                
-                return RedirectToAction("Index");
-            }
-            //Kiểm tra hình ảnh đã tồn tại hay chưa
-            
-            ViewBag.MaLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
+                if (ModelState.IsValid)
+                {
+                    db.Entry(sach).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.TheLoai = new SelectList(db.LoaiSaches, "MaLoai", "TenLoai", sach.TheLoai);
             return View(sach);
         }
 
@@ -158,6 +157,12 @@ namespace QuanLySach.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            List<BinhLuan> lsBinhLuan = db.BinhLuans.Where(x => x.MaSach == id).ToList();
+            foreach(BinhLuan bl in lsBinhLuan)
+            {
+                db.BinhLuans.Remove(bl);
+                //db.SaveChanges();
+            }
             Sach sach = db.Saches.Find(id);
             db.Saches.Remove(sach);
             db.SaveChanges();
